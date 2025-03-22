@@ -136,7 +136,7 @@
 						<span class="icon-bar"></span>
 					</button>
 					<!-- Q-Button for Mobile -->
-					<div class="quote-btn"><a class="btn" href="index.html">Enquire Today</a></div>
+					<div class="quote-btn"><a class="btn" href="product-single.html">Enquire Today</a></div>
 				</div>
 				<!-- MainNav -->
 				<nav class="navbar-collapse collapse" id="mainnav">
@@ -148,7 +148,7 @@
 						<li><a href="about-us.html">About</a></li>
 
 						<li><a href="product-single.html">Products</a></li>
-						<li class="quote-btn"><a class="btn" href="index.html">Enquire Today</a></li>
+						<li class="quote-btn"><a class="btn" href="product-single.html">Enquire Today</a></li>
 					</ul>
 				</nav>
 				<!-- #end MainNav -->
@@ -161,7 +161,7 @@
 				<div class="content row">
 
 					<div class="imagebg">
-						<img src="image/c8.png" alt="">
+						<img src="image/c7.png" alt="">
 					</div>
 
 				</div>
@@ -271,27 +271,26 @@
 									<p><a href="products.html" class="btn btn-full">Explore More </a></p>
 								</div>
 							</div>
+							
 							<div class="wgs-box wgs-quoteform">
 								<h3 class="wgs-heading">Quick Contact</h3>
 								<div class="wgs-content">
 									<p>Have questions? Contact us for expert advice on timber selection.</p>
-									<form id="contact-us" class="form-quote" action="contact.php" method="post">
+									<form id="contact-us" class="form-quote" onsubmit="sendEmail(event)">
 										<div class="form-group">
-											<input name="contact-name" type="text" placeholder="Name *"
-												class="form-control required">
+											<input id="contact-name" type="text" placeholder="Name *" class="form-control required" required>
 										</div>
 										<div class="form-group">
-											<input name="contact-email" type="email" placeholder="Email *"
-												class="form-control required email">
+											<input id="contact-email" type="email" placeholder="Email *" class="form-control required email" required>
 										</div>
 										<div class="form-group">
-											<input name="contact-message" type="text" placeholder="Your Message"
-												class="form-control">
+											<textarea id="contact-message" placeholder="Your Message" class="form-control"></textarea>
 										</div>
 										<button type="submit" class="btn btn-alt sb-h">Submit</button>
 									</form>
 								</div>
 							</div>
+
 						</div>
 					</div>
 					<!-- Sidebar #end -->
@@ -423,6 +422,23 @@
 		</div>
 	</div>
 	<!-- End Copyright -->
+
+	<script>
+		function sendEmail(event) {
+			event.preventDefault();
+			
+			var name = document.getElementById("contact-name").value;
+			var email = document.getElementById("contact-email").value;
+			var message = document.getElementById("contact-message").value;
+			
+			var subject = "New Inquiry from " + name;
+			var body = "Name: " + name + "%0D%0A" + 
+					   "Email: " + email + "%0D%0A" + 
+					   "Message: " + message;
+			
+			window.location.href = "mailto:sales@gimpex.com?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+		}
+	</script>
 
 	<!-- JavaScript Bundle -->
 	<script src="js/jquery.bundle.js"></script>
